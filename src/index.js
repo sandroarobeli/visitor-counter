@@ -42,5 +42,13 @@ const displayCount = (count) => {
     });
 };
 
-/// Increment on every load for now...
-incrementCount()
+// if else block to distinguish between first time and 
+// existing visitor to this site
+if (!localStorage.getItem("repeatVisitor")) {
+    console.log("key not created yet");
+    incrementCount();
+    localStorage.setItem("repeatVisitor", true);
+  } else {
+    console.log("existing viewer, displaying w/o incrementing");
+    getCount();
+  }
